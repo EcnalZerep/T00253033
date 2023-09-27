@@ -34,3 +34,4 @@ public class cubecontrol : MonoBehaviour
             transform.position = new Vector3(3, 0, 0);
     }
 }
+                    
