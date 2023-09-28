@@ -4,34 +4,46 @@ using UnityEngine;
 
 public class cubecontrol : MonoBehaviour
 {
+    float currentSpeed, walkingSpeed = 10, runningSpeed = 4;
+    private float turningSpeed = 100;
+    Animator myAnimator;
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3 (0, 7, 0);
+        currentSpeed = walkingSpeed;
+        myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
+
+      
     {
+        myAnimator.SetBool("isWalking", false);
         if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * Time.deltaTime;       
+        {   myAnimator.SetBool("isWalking", true);
+            transform.position += currentSpeed * transform.forward * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += Vector3.back * Time.deltaTime;
+            myAnimator.SetBool("isWalking", true);
+            transform.position -= currentSpeed * transform.forward * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate (Vector3.up, -90 * Time.deltaTime);
+            transform.Rotate(Vector3.up, turningSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(Vector3.up, -turningSpeed * Time.deltaTime);
         }
 
 
 
-        if (Input.GetKeyDown(KeyCode.P))
-            transform.position = new Vector3(3, 0, 0);
+
     }
 }
                     
