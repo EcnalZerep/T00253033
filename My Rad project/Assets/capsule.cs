@@ -1,64 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class capsule : MonoBehaviour
+public class CubeControlScript : MonoBehaviour
 {
     Rigidbody myRB;
-    // Start is called before the first frame update
+    private Camera mainCamera;
+
     void Start()
     {
         myRB = GetComponent<Rigidbody>();
+        myRB.freezeRotation = true;
+        mainCamera = FindAnyObjectByType<Camera>();
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            myRB.AddForce(transform.forward);
-        }
+        
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            myRB.AddExplosionForce(5,transform.forward + Vector3.down, 5);
-        }
+        if (Input.GetKey(KeyCode.W)) { transform.position += transform.forward * Time.deltaTime; }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.back * Time.deltaTime;
-        }
+        if (Input.GetKey(KeyCode.A)) { transform.position += Vector3.left * Time.deltaTime; }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += Vector3.left * Time.deltaTime;
-        }
+        if (Input.GetKey(KeyCode.S)) { transform.position -= transform.forward * Time.deltaTime; }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * Time.deltaTime;
-        }
+        if (Input.GetKey(KeyCode.D)) { transform.position += Vector3.right * Time.deltaTime; }
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            transform.position += Vector3.up * 10 * Time.deltaTime;
-        }
+        if (Input.GetKey(KeyCode.Space)) { myRB.AddForce(transform.up * 10, ForceMode.Force); }
 
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.Rotate(Vector3.up, 90 * Time.deltaTime);
-        }
 
-        if (Input.GetKey(KeyCode.Q))
+
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+
+        if(groundPlane.Raycast(cameraRay, out rayLength))
         {
-            transform.Rotate(Vector3.up, -90 * Time.deltaTime);
+            Vector3 pointtoLook = cameraRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraRay.origin, pointtoLook, Color.blue);
+
+            transform.LookAt(new Vector3(pointtoLook.x, transform.position.y, pointtoLook.z));  
+
+
+
+
+
+
         }
 
 
 
-
-
-        if (Input.GetKeyDown(KeyCode.P))
-            transform.position = new Vector3(0, 0, 0);
     }
+
 }
