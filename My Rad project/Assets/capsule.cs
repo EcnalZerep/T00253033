@@ -5,6 +5,9 @@ using UnityEngine.UIElements;
 
 public class CubeControlScript : MonoBehaviour
 {
+
+    GameObject snowballCloneTemplate;
+
     Rigidbody myRB;
     private Camera mainCamera;
 
@@ -31,12 +34,24 @@ public class CubeControlScript : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) { myRB.AddForce(transform.up * 10, ForceMode.Force); }
 
 
+        //Snowball
+        if (Input.GetMouseButton(0)) 
+        { 
+            GameObject newGO = Instantiate(snowballCloneTemplate); 
+            SnowballControl mySnowball = newGO.GetComponent<SnowballControl>();
+
+            mySnowball.ImThrowingYou(this);
+
+        }
+
+
 
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
 
         if(groundPlane.Raycast(cameraRay, out rayLength))
+
         {
             Vector3 pointtoLook = cameraRay.GetPoint(rayLength);
             Debug.DrawLine(cameraRay.origin, pointtoLook, Color.blue);
