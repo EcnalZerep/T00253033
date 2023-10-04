@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class cubecontrol : MonoBehaviour
 {
+
+    GameObject snowballClone;
+
     float currentSpeed, walkingSpeed = 10, runningSpeed = 4;
     private float turningSpeed = 100;
     Animator myAnimator;
@@ -39,6 +42,12 @@ public class cubecontrol : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.up, -turningSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetMouseButton(0)) 
+        {
+            Instantiate(snowballClone);        
+        
         }
 
 
