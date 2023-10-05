@@ -23,13 +23,13 @@ public class CubeControlScript : MonoBehaviour
     {
         
 
-        if (Input.GetKey(KeyCode.W)) { transform.position += transform.forward * Time.deltaTime; }
+        if (Input.GetKey(KeyCode.W)) { transform.position += transform.forward * 2 * Time.deltaTime; }
 
-        if (Input.GetKey(KeyCode.A)) { transform.position += Vector3.left * Time.deltaTime; }
+        if (Input.GetKey(KeyCode.A)) { transform.position += Vector3.left * 2 * Time.deltaTime; }
 
-        if (Input.GetKey(KeyCode.S)) { transform.position -= transform.forward * Time.deltaTime; }
+        if (Input.GetKey(KeyCode.S)) { transform.position -= transform.forward * 2 * Time.deltaTime; }
 
-        if (Input.GetKey(KeyCode.D)) { transform.position += Vector3.right * Time.deltaTime; }
+        if (Input.GetKey(KeyCode.D)) { transform.position += Vector3.right * 2 * Time.deltaTime; }
 
         if (Input.GetKey(KeyCode.Space)) { myRB.AddForce(transform.up * 10, ForceMode.Force); }
 
