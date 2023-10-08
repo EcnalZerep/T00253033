@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SnowControlScript : MonoBehaviour
@@ -9,6 +10,7 @@ public class SnowControlScript : MonoBehaviour
 
     Rigidbody rb;
     internal int check = 5;
+    private bool hasHitFloor = false; //Created boolean variable
     void Start()
     {
 
@@ -33,15 +35,27 @@ public class SnowControlScript : MonoBehaviour
             thingIHit.IHitYou();
         }
 
+        //tag made connected to the plane
+        if (collision.gameObject.CompareTag("Floor") && !hasHitFloor)  
+        {
+            hasHitFloor = true; 
+            gameObject.SetActive(false); //Needs to be checked
+        }
+
     }
+
+
 
     internal void ImThrowingYou(playerControl playerControl)
     {
-        transform.position = playerControl.transform.position + 1 * Vector3.up + 2 * playerControl.transform.forward;
-        rb = GetComponent<Rigidbody>();
+        if (!hasHitFloor)
+        {
+            transform.position = playerControl.transform.position + 1 * Vector3.up + 2 * playerControl.transform.forward;
+            rb = GetComponent<Rigidbody>();
 
-        rb.velocity = 10 * (1.5f * Vector3.forward + 2 * playerControl.transform.forward);
+            rb.velocity = 10 * (1.5f * Vector3.forward + 2 * playerControl.transform.forward);
 
+        }
 
     }
 }

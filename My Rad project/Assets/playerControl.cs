@@ -10,12 +10,14 @@ public class playerControl : MonoBehaviour
 
     Rigidbody myRB;
     private Camera mainCamera;
+    private bool isGrounded;
 
     void Start()
     {
         myRB = GetComponent<Rigidbody>();
         myRB.freezeRotation = true;
         mainCamera = FindAnyObjectByType<Camera>();
+        isGrounded = true;
     }
 
     // Update is called once per frame
@@ -43,9 +45,10 @@ public class playerControl : MonoBehaviour
             transform.position += Vector3.right * 5 * Time.deltaTime; 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) 
         { 
-            myRB.AddForce(transform.up * 1000, ForceMode.Force); 
+            myRB.AddForce(transform.up * 1000, ForceMode.Force);
+            isGrounded = true;
         }
 
         //Snowball
@@ -73,6 +76,7 @@ public class playerControl : MonoBehaviour
 
             transform.LookAt(new Vector3(pointtoLook.x, transform.position.y, pointtoLook.z)); 
         }
+
 
 
 
