@@ -135,7 +135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130237414}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0f71dd42a2cad840bdd5bb0e76c35d6, type: 3}
   m_Name: 
@@ -549,6 +549,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 360287100}
+    - target: {fileID: -1760063863544230698, guid: a789d90fb02bb764fb6246c6bc83e05e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3255461777184566381, guid: a789d90fb02bb764fb6246c6bc83e05e, type: 3}
       propertyPath: m_Name
       value: zombie 1 (2)
@@ -1037,6 +1041,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 360287100}
+    - target: {fileID: -1760063863544230698, guid: a789d90fb02bb764fb6246c6bc83e05e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3255461777184566381, guid: a789d90fb02bb764fb6246c6bc83e05e, type: 3}
       propertyPath: m_Name
       value: zombie 1
@@ -1243,7 +1251,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482357160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0f71dd42a2cad840bdd5bb0e76c35d6, type: 3}
   m_Name: 
@@ -1297,7 +1305,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539277219}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0f71dd42a2cad840bdd5bb0e76c35d6, type: 3}
   m_Name: 
@@ -1555,7 +1563,7 @@ GameObject:
   - component: {fileID: 1735466157}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1740,6 +1748,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 360287100}
+    - target: {fileID: -1760063863544230698, guid: a789d90fb02bb764fb6246c6bc83e05e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3255461777184566381, guid: a789d90fb02bb764fb6246c6bc83e05e, type: 3}
       propertyPath: m_Name
       value: zombie 1 (1)
